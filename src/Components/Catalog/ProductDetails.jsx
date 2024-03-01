@@ -6,6 +6,7 @@ import ProductService from "../services/ProductService";
 import ProductSizeService from "../services/ProductSizeService";
 import FileService from "../services/FileService";
 import { docPrefixURL, imgPrefixURL } from "../Common/ddata";
+import parse from 'html-react-parser';
 
 const ProductDetails = () => {
   const [product, setProduct] = useState("");
@@ -83,7 +84,7 @@ const ProductDetails = () => {
             </div>
             <div className="col-md-6">
               {product.isSantec ? (<p className="santec-product">santec</p>) : ''}
-              <p className="product-description">{product.description}</p>
+              <p className="product-description">{parse(`${product.description}`)}</p>
 
               <table>
                 <thead>

@@ -10,6 +10,8 @@ import ReactPlayer from "react-player";
 import "./ProdEdit.css";
 import ProductSizeService from "../../services/ProductSizeService";
 import BrandService from "../../services/BrandService";
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import Typewriter from "typewriter-effect";
 import Spinner from "react-bootstrap/Spinner";
@@ -384,6 +386,8 @@ export const ProdEdit = () => {
               <div className="card-title">
                 <h2>Редактирование</h2>
               </div>
+
+
               <div className="card-body">
                 <div className="row">
                   <div className="col-lg-12">
@@ -485,11 +489,29 @@ export const ProdEdit = () => {
                       <label className="form-label" htmlFor="">
                         Описание
                       </label>
-                      <input
+                      {/* <input
                         value={description}
                         onChange={(e) => descriptionchange(e.target.value)}
                         className="form-control"
-                      />
+                      /> */}
+                                    <CKEditor
+                    editor={ ClassicEditor }
+                    data={description}
+                    onReady={ editor => {
+                        // You can store the "editor" and use when it is needed.
+                        console.log( 'Editor is ready to use!', editor );
+                    } }
+                    onChange={ ( event, editor ) => {
+                      descriptionchange(editor.getData());
+                    }}
+                    onBlur={ ( event, editor ) => {
+                        console.log( 'Blur.', editor );
+                    } }
+                    onFocus={ ( event, editor ) => {
+                        console.log( 'Focus.', editor );
+                    } }
+                />
+
                     </div>
                   </div>
                   <div className="row mb-3">
