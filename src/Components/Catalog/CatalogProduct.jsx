@@ -11,8 +11,9 @@ export const CatalogProduct = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [brands, setBrands] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [brandCode, setBrandCode] = useState('');
+  
 
-  const brandCode = searchParams.get('brand');
 
   const params = useParams();
   const category = params.categoryId;
@@ -21,11 +22,18 @@ export const CatalogProduct = () => {
 
   useEffect(() => {
 
+    const brandQueryParam = searchParams.get('brand');
+    if(brandQueryParam) {
+      console.log('brandQueryParam', brandQueryParam);
+      setBrandCode(brandQueryParam);
+    }
+  
+
     ProductService.findByCategoryAndParams(category).then((result) => {
       if(result.products) {
         setProducts(result.products);
-        if(brandCode) {
-          filteredBrandProductsIfExist(result.products, brandCode);
+        if(brandQueryParam) {
+          filteredBrandProductsIfExist(result.products, brandQueryParam);
         } else {
           setFilteredProducts(result.products)
         }
@@ -72,6 +80,7 @@ export const CatalogProduct = () => {
                 id={brand.id}
                 name="brand"
                 value={brand.id}
+                checked={ brand.code === brandCode }
                 onChange={() => onBrandSelect(brand.code)}
               />&nbsp;&nbsp;
               <img
