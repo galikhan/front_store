@@ -3,19 +3,19 @@ import aboutUsImageUrl from "../../Assets/about-us.png";
 
 export const About = () => {
   return (
-    <div class="container fluid">
-      <div class="row gy-3">
+    <div className="container fluid">
+      <div className="row gy-3">
         <h6 className="page-title">О компании</h6>
-        <div class="col-12 col-lg-6">
+        <div className="col-12 col-lg-6">
           <img
-            class="img-fluid rounded"
+            className="img-fluid rounded"
             loading="lazy"
             src={aboutUsImageUrl}
             alt=""
           />
         </div>
-        <div class="col-12 col-lg-6">
-          <p class="ml-3">
+        <div className="col-12 col-lg-6">
+          <p className="ml-3">
             <b>Santehplast</b> - это современная динамично развивающаяся
             торгово-производственная компания, занявшая прочную позицию на рынке
             Казахстана в области бытового и инженерного оборудования для систем
@@ -26,7 +26,7 @@ export const About = () => {
             Караганда, Алматы.
           </p>
         </div>
-        <div class="ratio ratio-4x3 col-md-6" style={{ marginTop: "3%" }}>
+        <div className="ratio ratio-4x3 col-md-6" style={{ marginTop: "3%" }}>
           <iframe
             width="560"
             height="315"

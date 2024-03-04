@@ -111,7 +111,7 @@ export const ProdCreate = () => {
           onChange={(y) => setproductId(y.target.value)}
         />
 
-        <div class="mb-3">
+        <div className="mb-3">
           <label className="form-label">Название товара:</label>
           <input
             className="form-control"
@@ -121,7 +121,7 @@ export const ProdCreate = () => {
             required
           />
         </div>
-        <div class="mb-3">
+        <div className="mb-3">
           <label className="form-label">Описание:</label>
           <textarea
             className="form-control"
@@ -132,7 +132,7 @@ export const ProdCreate = () => {
           />
         </div>
 
-        <div class="mb-3">
+        <div className="mb-3">
           <div className="checkbox">
             <label className="form-check-label">Новинка:</label>
             <input
@@ -144,7 +144,7 @@ export const ProdCreate = () => {
           </div>
         </div>
 
-        <div class="mb-3">
+        <div className="mb-3">
           <div className="checkbox">
             <label className="form-check-label">Продукция SANTEC:</label>
             <input
@@ -156,7 +156,7 @@ export const ProdCreate = () => {
           </div>
         </div>
 
-        <div class="mb-3">
+        <div className="mb-3">
           <label className="form-label">Ссылка для видео:</label>
           <input className="form-control" type="url" onChange={(y) => setVideo_pr(y.target.value)} />
         </div>

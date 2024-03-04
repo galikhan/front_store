@@ -36,8 +36,8 @@ export const Catalog = () => {
         isBrowser && (
           <MDBCarousel showIndicators showControls className="bg-body-tertiary mt-4 slider_wrap">
             {
-              carousels.map((item) => (
-                <MDBCarouselItem itemId={item.id} className="slider" >
+              carousels.map((item, index) => (
+                <MDBCarouselItem key={index} itemId={item.id} className="slider" >
                   <a href={item.link}>
                     <img src={item.imageSrc} className="d-block w-100" alt="..." />
                   </a>
@@ -48,10 +48,10 @@ export const Catalog = () => {
       }
       <div>
         <div className="row mt-4">
-          {mainCategories.map((item) => (
+          {mainCategories.map((item, index) => (
             <div
               className="col-6 col-sm-4 col-md-3 col-lg-2"
-              key={item.category.id}
+              key={index}
             >
               <Link
                 to={`/catalog/${item.category.id}`}

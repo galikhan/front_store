@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./CatalogProducts.css";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, useParams, useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import ProductService from "../services/ProductService";
 import { DOMAIN, imgPrefixURL } from "../Common/ddata";
 import { images } from '../../Assets/brand/images';
@@ -10,26 +10,44 @@ export const CatalogProduct = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [brands, setBrands] = useState([]);
-  const params = useParams();
-  const category = params.categoryId;
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const brandCode = searchParams.get('brand');
+
+  const params = useParams();
+  const category = params.categoryId;
+  const location = useLocation();
+  const navigate = useNavigate();
+
   useEffect(() => {
+
     ProductService.findByCategoryAndParams(category).then((result) => {
       if(result.products) {
         setProducts(result.products);
+        if(brandCode) {
+          filteredBrandProductsIfExist(result.products, brandCode);
+        } else {
+          setFilteredProducts(result.products)
+        }
       }
-      setFilteredProducts(result.products);
+      // brands
       if(result.brands) {
         setBrands(result.brands.reverse());
       }
     });
-  }, []);
 
+  }, [location]);
 
-  const onBrandSelect = (brand) => {
-    const filteredProducts = products.filter(item => item.brand === brand.code);
+  const filteredBrandProductsIfExist = (products, brandCode) => {
+    const filteredProducts = products.filter(item => item.brand === brandCode);
     setFilteredProducts(filteredProducts);
+  };
+
+  const onBrandSelect = (brandCode) => {
+    if(brandCode) {
+      navigate('?brand='+brandCode );
+      filteredBrandProductsIfExist(products, brandCode);
+    }
   };
 
   const handleHover = (index) => {
@@ -43,7 +61,7 @@ export const CatalogProduct = () => {
   };
   return (
     <>
-      <div class="row mt-4">
+      <div className="row mt-4">
         
         <div className="brands-container">
         {/* <label>Фильтр:</label> */}
@@ -54,7 +72,7 @@ export const CatalogProduct = () => {
                 id={brand.id}
                 name="brand"
                 value={brand.id}
-                onChange={() => onBrandSelect(brand)}
+                onChange={() => onBrandSelect(brand.code)}
               />&nbsp;&nbsp;
               <img
                 src={images[brand.code]}
@@ -67,9 +85,9 @@ export const CatalogProduct = () => {
           ))}
         </div>
 
-        {filteredProducts.map((product) => (
-          <div className="mt-4 col-6 col-sm-4 col-md-3 col-lg-2">
-            <Link to={`product/${product.id}`}>
+        {filteredProducts.map((product, index) => (
+          <div key={index} className="mt-4 col-6 col-sm-4 col-md-3 col-lg-2">
+            <Link to={`product/${product.id}` }>
               <div className={`${product.isNew ? 'image-container' : ''} card santehplast-card`}>
                 <div className="product-image">
                   <img

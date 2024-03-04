@@ -724,7 +724,7 @@ export const ProdEdit = () => {
                   <hr />
                   <br />
 
-                  <div class="col-md-12">
+                  <div className="col-md-12">
                     <label className="form-label">
                       Загрузить паспорта и сертификаты:{" "}
                     </label>
@@ -803,7 +803,7 @@ export const ProdEdit = () => {
                                 <td>
                                   <button
                                     type="button"
-                                    class="btn btn-success"
+                                    className="btn btn-success"
                                     onClick={handleFileRealName}
                                   >
                                     Save
@@ -814,7 +814,7 @@ export const ProdEdit = () => {
                           </table>
                         </fieldset>
                       ) : (
-                        <div class="alert alert-danger" role="alert">
+                        <div className="alert alert-danger" role="alert">
                           Не удалось загрузить. Возможные причины: ошибка
                           сервера, слишком большие данные!
                         </div>

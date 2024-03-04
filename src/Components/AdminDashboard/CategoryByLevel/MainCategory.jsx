@@ -123,7 +123,7 @@ export const MainCategory = () => {
   return (
     <>
       <br />
-      <div class="row">
+      <div className="row">
 
         <form>
           <div className="col-md-12 category">
@@ -141,7 +141,7 @@ export const MainCategory = () => {
             </div>
           </div>
 
-          <div class="row">
+          <div className="row">
             <div className="col-md-6">
               <div className="form-group">
                 <label className="form-check-label"> Категория для Santec </label>

@@ -22,9 +22,9 @@ export const CatalogSubCategory = () => {
     <>
       <div>
         <div className="row mt-4">
-          {categories.map((item) => (
+          {categories.map((item, index) => (
 
-            <div className="col-6 col-sm-4 col-md-3 col-lg-2">
+            <div key={index} className="col-6 col-sm-4 col-md-3 col-lg-2">
               <Link to={`products/${item.category.id}`}>
                 <div className="card santehplast-card">
                   <img

@@ -21,7 +21,7 @@ const ProductDetails = () => {
 
 
   useEffect(() => {
-    console.log('images', images);
+
     ProductService.findById(id).then((result) => {
       setProduct(result);
     });
@@ -74,8 +74,9 @@ const ProductDetails = () => {
             <div className="col-md-6 ">
               <img src={activeImg} alt="" className="product-image" />
               <div className="thumbnail-container">
-                {productImages.map((image) => (
+                {productImages.map((image, index) => (
                   <img
+                    key={index}
                     src={imgPrefixURL + "/" + image.filename}
                     alt=""
                     className="thumbnail"
@@ -93,7 +94,7 @@ const ProductDetails = () => {
                 />
                 <br />
                 <br />
-                <p className="product-description">{parse(`${product.description}`)}</p>
+                <div className="product-description">{parse(`${product.description}`)}</div>
 
               </div>
               <table>
@@ -104,9 +105,9 @@ const ProductDetails = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {productSizes.map((productSize) =>
+                  {productSizes.map((productSize, index) =>
                     !productSize.isRemoved && (
-                      <tr>
+                      <tr key={index}>
                         <td>{productSize.article}</td>
                         <td>{productSize.size}</td>
                       </tr>
@@ -116,8 +117,8 @@ const ProductDetails = () => {
 
               <div id="fileDisplayArea">{product.file_pr}</div>
               <div className="row ">
-                {fileRealDisplay.map((product) => (
-                  <div className="col-md-4 mb-3 " key={product.id}>
+                {fileRealDisplay.map((product, index) => (
+                  <div className="col-md-4 mb-3 " key={index}>
                     <div className="img-thumbnail position-relative ">
                       <div className="d-flex align-items-center ">
                         <a
