@@ -19,7 +19,6 @@ export const Catalog = () => {
   ]);
 
   useEffect(() => {
-    console.log('isMobile', isMobile, isBrowser);
     loadCategories();
   }, []);
 

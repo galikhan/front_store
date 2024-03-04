@@ -7,10 +7,11 @@ import ProductSizeService from "../services/ProductSizeService";
 import FileService from "../services/FileService";
 import { docPrefixURL, imgPrefixURL } from "../Common/ddata";
 import parse from 'html-react-parser';
+import { images } from '../../Assets/brand/images';
 
 const ProductDetails = () => {
   const [product, setProduct] = useState("");
-  const [images, setImages] = useState([]);
+  const [productImages, setProductImages] = useState([]);
   const [productSizes, setProductSizes] = useState([]);
   const [activeImg, setActiveImage] = useState();
   const [fileRealDisplay, setFileRealDisplay] = useState([]);
@@ -18,7 +19,9 @@ const ProductDetails = () => {
   const params = useParams();
   const id = params.productId;
 
+
   useEffect(() => {
+    console.log('images', images);
     ProductService.findById(id).then((result) => {
       setProduct(result);
     });
@@ -28,8 +31,7 @@ const ProductDetails = () => {
       const docs = result.filter((r) => r.containerClass == "Document");
       setFileRealDisplay(docs);
       if (thumbs && thumbs.length > 0) {
-        setImages(thumbs);
-        console.log('thubms', thumbs.sort(compareFn));
+        setProductImages(thumbs);
         const originalFilename = getImageFilename(thumbs[0].filename);
         setActiveImage(imgPrefixURL + "/" + originalFilename);
       }
@@ -72,7 +74,7 @@ const ProductDetails = () => {
             <div className="col-md-6 ">
               <img src={activeImg} alt="" className="product-image" />
               <div className="thumbnail-container">
-                {images.map((image) => (
+                {productImages.map((image) => (
                   <img
                     src={imgPrefixURL + "/" + image.filename}
                     alt=""
@@ -83,9 +85,17 @@ const ProductDetails = () => {
               </div>
             </div>
             <div className="col-md-6">
-              {product.isSantec ? (<p className="santec-product">santec</p>) : ''}
-              <p className="product-description">{parse(`${product.description}`)}</p>
+              <div>
 
+                <img
+                  src={images[product.brand]}
+                  className="product-brand"
+                />
+                <br />
+                <br />
+                <p className="product-description">{parse(`${product.description}`)}</p>
+
+              </div>
               <table>
                 <thead>
                   <tr>
@@ -94,13 +104,13 @@ const ProductDetails = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {productSizes.map((productSize) => 
+                  {productSizes.map((productSize) =>
                     !productSize.isRemoved && (
-                    <tr>
-                      <td>{productSize.article}</td>
-                      <td>{productSize.size}</td>
-                    </tr>
-                  ))}
+                      <tr>
+                        <td>{productSize.article}</td>
+                        <td>{productSize.size}</td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
 
