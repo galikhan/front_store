@@ -114,6 +114,26 @@ const ProductDetails = () => {
                 </tbody>
               </table>
 
+              <div id="fileDisplayArea">{product.file_pr}</div>
+              <div className="row ">
+                {fileRealDisplay.map((product) => (
+                  <div className="col-md-4 mb-3 " key={product.id}>
+                    <div className="img-thumbnail position-relative ">
+                      <div className="d-flex align-items-center ">
+                        <a
+                          href={docPrefixURL + product.filename}
+                          target="_blank"
+                          className="d-flex"
+                        >
+                          <i className="fa fa-file-pdf-o pdfFile"></i>
+                          <span className="file_name">{product.description}</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
               <div className="d-inline-block mb-3">
                 <ReactPlayer
                   className="mo"
@@ -123,31 +143,10 @@ const ProductDetails = () => {
                   height="280px"
                 />
               </div>
-
-              <div id="fileDisplayArea">{product.file_pr}</div>
             </div>
           </div>
 
-          <div className="container ">
-            <div className="row ">
-              {fileRealDisplay.map((product) => (
-                <div className="col-md-4 mb-3 " key={product.id}>
-                  <div className="img-thumbnail position-relative ">
-                    <div className="d-flex align-items-center ">
-                      <a
-                        href={docPrefixURL + product.filename}
-                        target="_blank"
-                        className="d-flex"
-                      >
-                        <i className="fa fa-file-pdf-o pdfFile"></i>
-                        <span className="file_name">{product.description}</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+
         </div>
       </>
     </div>

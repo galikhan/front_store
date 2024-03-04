@@ -9,67 +9,91 @@ export const Contacts = () => {
           <h6 className="page-title">Контакты</h6>
         </div>
       </div>
-      <div class="row">
+      <div class="row mt-10">
         <div class="col-12 col-lg-4">
-          <img
-            class="img-fluid rounded"
-            loading="lazy"
-            src={pipeImageUrl}
-            alt=""
-          />
+          <div class="col-12 col-xl-10 mt-4">
+            <div class="d-flex justify-content-center align-items-center">
+              <a target="_blank" href="https://2gis.kz/karaganda/firm/70000001041892041"><i class="fas fa-location-dot fa-4x"></i></a>
+            </div>
+            <div class="mt-4 text-center">
+              <p>
+                ТОО "SANTEHPLAST"
+                <p class="fw-bold">г. Караганды</p>
+                <p>ул Гоголя 64/3</p>
+                <a href="tel:87057590099">+7(705)759-00-99</a><br />
+                <a href="tel:87010716140">+7(701)071-61-40</a>
+              </p>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+              <i class="fas fa-clock fa-4x"></i>
+            </div>
+            <div class="mt-4 text-center">
+              <p>Время работы:</p>
+              <p>Пн-Пт: 9:00 — 18:00</p>
+              <p>Сб: 9:00 — 14:00</p>
+            </div>
+
+          </div>
+
         </div>
-        <div class="col-12 col-lg-4" style={{ marginTop: "5%" }}>
+        <div class="col-12 col-lg-4">
+
           <div class="row justify-content-xl-center">
-            <div class="col-12 col-xl-10">
+
+            <div class="col-12 col-xl-10 mt-4">
               <div class="d-flex justify-content-center align-items-center">
-                <i class="fas fa-location-dot fa-4x"></i>
+                <a target="_blank" href="https://2gis.kz/astana/firm/70000001018072767"><i class="fas fa-location-dot fa-4x"></i></a>
               </div>
-              <div style={{ marginTop: "9%" }}>
-                <p style={{ textAlign: "center" }}>
+              <div class="mt-4 text-center">
+                <p>
                   ТОО "SANTEHPLAST"
-                  <p>Юридический адрес : город Караганды, ул Гоголя 64/3</p>
-                  <a href="tel:87057590099">+7(705)759-00-99</a><br />
-                  <a href="tel:87010716140">+7(701)071-61-40</a>
-                </p>
-                <br />
-                <p style={{ textAlign: "center" }}>
-                <p>
-                  в г.Астана <br />
-                  ул Бейсекбаева 18Б 1 этаж
-                </p>
-                <p>
+                  <p class="fw-bold">г.Астана </p>
+                  <p>ул Бейсекбаева 18Б 1 этаж</p>
                   <a href="tel:87052396303">+7(705)239-63-03</a><br />
                   <a href="tel:8(705)7592999">+7(705)759-29-99</a>
                 </p>
-              </p>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-4" style={{ marginTop: "5%" }}>
-          <div class="row justify-content-xl-center">
-            <div class="col-12 col-xl-10">
+
               <div class="d-flex justify-content-center align-items-center">
                 <i class="fas fa-clock fa-4x"></i>
               </div>
-              <div style={{ marginTop: "9%" }}>
-                <p style={{ textAlign: "center" }}>Время работы:</p>
-                <p style={{ textAlign: "center" }}>Пн-Пт: 9:00 — 18:00</p>
-                <p style={{ textAlign: "center" }}>Сб: 9:00 — 14:00</p>
+              <div class="mt-4 text-center">
+                <p>Время работы:</p>
+                <p>Пн-Пт: 9:00 — 18:00</p>
+                <p>Сб: 9:00 — 14:00</p>
+              </div>
+
+
+            </div>
+
+          </div>
+        </div>
+        <div class="col-12 col-lg-4">
+          <div class="row justify-content-xl-center">
+            <div class="col-12 col-xl-10 mt-4">
+              <div class="d-flex justify-content-center align-items-center">
+                <a target="_blank" href="https://2gis.kz/almaty/geo/9430047375063232"><i class="fas fa-location-dot fa-4x"></i></a>
+              </div>
+              <div class="mt-4 mb-4 text-center">
+                <p>
+                  ТОО "SANTEHPLAST"
+                  <p class="fw-bold">г. Алматы </p>
+                  <p>Микрорайон Атырау, 10 2 этаж</p>
+                  <a href="tel:87758191232">+7(775)819-12-32</a><br />
+                  <a style={{"display":"none"}} href="tel:87758191232">+7(775)819-12-32</a><br />
+                </p>
+              </div>
+              <div class="mt-4 d-flex justify-content-center align-items-center">
+                <i class="fas fa-clock fa-4x"></i>
+              </div>
+              <div class="mt-4 text-center">
+                <p>Время работы:</p>
+                <p>Пн-Пт: 9:00 — 18:00</p>
+                <p>Сб: 9:00 — 14:00</p>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="ratio ratio-16x9" style={{ marginTop: "5%" }}>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387.0197991818999!2d71.45819614978676!3d51.16972587506492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4245819bff52b20d%3A0xf0a2b9cc7e10d59a!2z0KHQsNC90YLQtdGF0L_Qu9Cw0YHRgg!5e0!3m2!1sru!2skz!4v1703958282255!5m2!1sru!2skz"
-          width="600"
-          height="450"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
       </div>
     </div>
   );

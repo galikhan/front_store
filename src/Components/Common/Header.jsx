@@ -70,7 +70,7 @@ export const Header = () => {
 
   return (
     <>
-      <Navbar key={size} expand={size} className="bg-body-tertiary mb-3 mt-4">
+      <Navbar key={size} expand={size} className="bg-body-tertiary mb-3 mt-2">
         <Container fluid>
           <Form
             className="d-flex  flex-md-row align-items-center"
@@ -133,9 +133,9 @@ export const Header = () => {
                 <a className="nav-underline nav-link" href="/contacts">
                   Контакты
                 </a>
-                <a className="nav-underline nav-link" href="tel:+7(705)2396303">
+                {/* <a className="nav-underline nav-link" href="tel:+7(705)2396303">
                   +7(705)2396303
-                </a>
+                </a> */}
                 <button
                   className="sign-in-button btn btn-sm btn-outline-secondary"
                   onClick={handleShow}
