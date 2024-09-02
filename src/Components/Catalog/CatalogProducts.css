@@ -87,11 +87,12 @@ section {
 
   border: 2px solid #ff0000; /* Set border width to 2px and color to bright red */
   border-radius: 10px; /* Increase corner radius to 10px */
-  padding: 5px; /* Increase padding to 10px */
+  padding: 0px 7px; /* Increase padding to 10px */
   display: inline-block; /* Make the label display as an inline block */
   background-color: #f5f5f5; /* Add a light gray background */
   font-weight: bold; /* Make the text bold */
-  
+  min-height: 40px;
+  align-content: center;
 }
 label .valtec {
   margin: 6px;

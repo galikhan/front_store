@@ -71,10 +71,11 @@ const ProductDetails = () => {
           </div>
 
           <div className="row">
-            <div className="col-md-6 ">
+            <div className="col-md-5 ">
               <img src={activeImg} alt="" className="product-image" />
               <div className="thumbnail-container">
-                {productImages.map((image, index) => (
+
+                {productImages && (productImages.length > 1) && productImages.map((image, index) => (
                   <img
                     key={index}
                     src={imgPrefixURL + "/" + image.filename}
@@ -85,7 +86,7 @@ const ProductDetails = () => {
                 ))}
               </div>
             </div>
-            <div className="col-md-6">
+            <div className="col-md-7">
               <div>
 
                 <img

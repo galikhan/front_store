@@ -116,6 +116,7 @@ export const ProdEdit = () => {
       });
   };
 
+  const [articleId, setArticleId] = useState();
   const [article, setArticle] = useState("");
   const [size, setSize] = useState("");
   const [productId, setproductId] = useState();
@@ -141,23 +142,28 @@ export const ProdEdit = () => {
     const productsi = {
       article,
       size,
-      product,
+      product: productId,
+      id: articleId
     };
 
-    fetch(URL + "/product/size", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(productsi),
-    })
-      .then(function (response) {
-        return response.json();
-      })
-      .then((product) => {
-        // setproductId(product.id);
-        setProductArticleAndSize([...productArticleAndSize, product]);
-      });
+      if(articleId) {
+        ProductSizeService.update(productsi).then(result => {
+          const updateArtSizes = [];
+          productArticleAndSize.forEach(artSize => {
+            if(artSize.id === result.id) {
+              artSize.article=result.article;
+              artSize.size=result.size;
+            }
+            updateArtSizes.push(artSize);
+          });
+          setProductArticleAndSize(updateArtSizes);
+        });
+      } else {
+        ProductSizeService.create(productsi).then(result => {
+          setProductArticleAndSize([...productArticleAndSize, result]);
+        });
+      }
+
   };
 
   // const[productsize,setProductsize] = useState([])
@@ -175,8 +181,10 @@ export const ProdEdit = () => {
       });
   }, []);
 
-  const LoadEdit = (id) => {
-    navigate("/adminpage/prodlisting/prodedit/" + empid + "/" + id);
+  const LoadEdit = (product) => {
+    setArticleId(product.id);
+    setArticle(product.article);
+    setSize(product.size);
   };
 
   const removeArticleAndSize = (productSize) => {
@@ -608,7 +616,7 @@ export const ProdEdit = () => {
                                 <td>
                                   <a
                                     onClick={() => {
-                                      LoadEdit(product.id);
+                                      LoadEdit(product);
                                     }}
                                     className="btn btn-success"
                                   >
